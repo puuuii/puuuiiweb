@@ -14,7 +14,6 @@
 3. 残りの必要なパッケージをインストール
    1. プロジェクトディレクトリ直下で`npm install --save @types/uikit`
    2. プロジェクトディレクトリ直下で`npm i uikit`
-   3. プロジェクトディレクトリ直下で`npm install vue-router`
 
 ## 各種コマンド
 
