@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    Home
+  <div class="news">
+    News Page
   </div>
 </template>
 
