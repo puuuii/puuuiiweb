@@ -14,8 +14,11 @@
 3. 残りの必要なパッケージをインストール
    1. プロジェクトディレクトリ直下で`npm install --save @types/uikit`
    2. プロジェクトディレクトリ直下で`npm i uikit`
+   3. プロジェクトディレクトリ直下で`npm install gh-pages --save-dev`
 
 ## 各種コマンド
 
 - 開発サーバー起動
   - `npm run serve`
+- GithubPagesへデプロイ
+  - `npm run deploy`
