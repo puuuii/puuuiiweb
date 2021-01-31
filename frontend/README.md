@@ -13,6 +13,8 @@
    6. 残りの質問は任意
 3. 残りの必要なパッケージをインストール
    1. プロジェクトディレクトリ直下で`npm install uikit @types/uikit gh-pages`
+4. github pagesに反映準備
+   1. `package.json`に`"deploy": "npm run build && gh-pages -d dist"`を追記
 
 ## 各種コマンド
 

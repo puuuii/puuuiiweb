@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>This is an Home page</h1>
+  <div class="gsapTraining">
+    <h1>gsap</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Home',
+  name: 'Gsap',
   components: {
   },
 });
