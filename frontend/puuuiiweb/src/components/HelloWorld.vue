@@ -1,6 +1,5 @@
 <template>
-  <div class="news">
-    News Page
+  <div class="hello">
   </div>
 </template>
 
@@ -8,8 +7,8 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Home',
-  components: {
+  name: 'HelloWorld',
+  props: {
   },
 });
 </script>
