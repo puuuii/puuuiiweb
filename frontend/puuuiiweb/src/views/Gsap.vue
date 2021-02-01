@@ -1,15 +1,32 @@
 <template>
-  <div class="gsapTraining">
-    <h1>gsap</h1>
+  <div>
+    <div id="gsapNav" v-show="navShow">
+      <router-link to="/gsap/circle">Circle</router-link>
+    </div>
+    <br>
+    <router-view @showNavEvent="showNav"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'Gsap',
-  components: {
-  },
+
+  setup(props, context) {
+    let navShow = ref<boolean>(true);
+
+    // ナビゲータ表示制御
+    const showNav = (show: boolean) => {
+      context.emit('showNavEvent', show);
+      navShow.value = show;
+    };
+
+    return { navShow, showNav }
+  }
 });
 </script>
+
+<style scoped>
+</style>
