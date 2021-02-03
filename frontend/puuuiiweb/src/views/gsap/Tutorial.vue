@@ -56,8 +56,13 @@ export default defineComponent({
       tween = gsap.to('.commandSquare', {x: 500, duration: 3, paused: true});
     }),
 
-    // ナビゲータ表示通知
-    onUnmounted(() => context.emit('showNavEvent', true));
+    onUnmounted(() => {
+      // ナビゲータ表示通知
+      context.emit('showNavEvent', true);
+
+      // 全てのアニメーションを削除
+      gsap.globalTimeline.clear();
+    });
 
     // 関数定義
     const play = () => tween.play();
