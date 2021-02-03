@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="gsapNav" v-show="navShow">
-      <router-link to="/gsap/circle">Circle</router-link>
+      <router-link to="/gsap/tutorial">Tutorial</router-link>
     </div>
     <br>
     <router-view @showNavEvent="showNav"/>

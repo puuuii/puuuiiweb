@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import Gsap from '../views/Gsap.vue'
-import Circle from '../views/gsap/CircleMove.vue'
+import Tutorial from '../views/gsap/Tutorial.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -15,8 +15,8 @@ const routes: Array<RouteRecordRaw> = [
     component: Gsap,
     children: [
       {
-        path: 'circle',
-        component: Circle,
+        path: 'tutorial',
+        component: Tutorial,
       },
     ],
   },
