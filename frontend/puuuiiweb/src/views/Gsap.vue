@@ -1,9 +1,10 @@
 <template>
   <div>
     <div id="gsapNav" v-show="navShow">
-      <router-link to="/gsap/tutorial">Tutorial</router-link>
+      <router-link to="/gsap/tutorial">Tutorial</router-link> |
+      <router-link to="/gsap/atom">Atom</router-link> |
+      <router-link to="/gsap/scroll">Scroll</router-link>
     </div>
-    <br>
     <router-view @showNavEvent="showNav"/>
   </div>
 </template>
