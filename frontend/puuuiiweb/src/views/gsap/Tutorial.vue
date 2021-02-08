@@ -54,7 +54,7 @@ export default defineComponent({
         .to('.pursquqre3', {x: 400, ease:"bounce.inOut"}, '<0.5');
       gsap.to('.stagger', {duration: 0.5, stagger: 0.2, x: 500});
       tween = gsap.to('.commandSquare', {x: 500, duration: 3, paused: true});
-    }),
+    });
 
     onUnmounted(() => {
       // ナビゲータ表示通知
