@@ -1,5 +1,5 @@
 <template>
-  <div class="body" :style="styleFullHeight">
+  <div class="body">
     <div class="atom" :style="styleAtomLength">
       <div class="orbit">
         <div class="path">
@@ -47,10 +47,6 @@ export default defineComponent({
     onMounted(() => {
       // ナビゲータ非表示通知
       context.emit('showNavEvent', false);
-
-      // スクロール阻止処理
-      document.addEventListener('touchmove', (e) => e.preventDefault(), {passive: false});
-      document.addEventListener('mousewheel', (e) => e.preventDefault(), {passive: false});
 
       // アニメーション定義
       const tl = gsap.timeline(),
@@ -105,7 +101,7 @@ export default defineComponent({
     // ナビゲータ表示通知
     onUnmounted(() => context.emit('showNavEvent', true));
 
-    return { styleFullHeight, styleAtomLength, styleNucleusLength, styleElectronLength }
+    return { styleAtomLength, styleNucleusLength, styleElectronLength }
   }
 });
 </script>
@@ -113,6 +109,7 @@ export default defineComponent({
 <style scoped>
   .body {
     width: 100%;
+    height: 100vh;
     background-color: gray;
     scrollbar-width: none;
     -ms-overflow-style: none;
