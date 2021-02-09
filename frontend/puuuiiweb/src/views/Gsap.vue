@@ -3,7 +3,8 @@
     <div id="gsapNav" v-show="navShow">
       <router-link to="/gsap/tutorial">Tutorial</router-link> |
       <router-link to="/gsap/atom">Atom</router-link> |
-      <router-link to="/gsap/scroll">Scroll</router-link>
+      <router-link to="/gsap/scroll">Scroll</router-link> |
+      <router-link to="/gsap/draggable">Draggable</router-link>
     </div>
     <router-view @showNavEvent="showNav"/>
   </div>
