@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <button v-for="i in 3" :key="i" @click="scrollToSection(i)">sec{{ i }}</button>
+    <a class="button" v-for="i in 3" :key="i" @click="scrollToSection(i)">sec{{ i }}</a>
     <section class="sec1">　　　　　　　　　　this is section 1</section>
     <section class="sec2">　　　　　　　　　　this is section 2</section>
     <section class="sec3">　　　　　　　　　　this is section 3</section>
@@ -26,10 +26,7 @@ export default defineComponent({
     // ナビゲータ表示通知
     onUnmounted(() => context.emit('mountedEvent', false));
 
-    const scrollToSection = (i: number) => {
-      console.log('i: ', i);
-      gsap.to(window, {duration: 0.1, scrollTo: { y: `.sec${i}` }, ease: Elastic.easeOut});
-    };
+    const scrollToSection = (i: number) => gsap.to(window, {duration: 1, scrollTo: { y: `.sec${i}` }, ease: Elastic.easeOut});
 
     return { scrollToSection }
   },
@@ -40,13 +37,16 @@ export default defineComponent({
   .body {
     width: 100%;
   }
-  button {
+  .button {
     position: fixed;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 10%
   }
-  button:nth-child(2) {
+  .button:nth-child(2) {
     left: 50px;
   }
-  button:nth-child(3) {
+  .button:nth-child(3) {
     left: 100px;
   }
   .sec1 {
