@@ -16,7 +16,7 @@ export default defineComponent({
   setup(props, context) {
     onMounted(() => {
       // ナビゲータ非表示通知
-      context.emit('showNavEvent', false);
+      context.emit('mountedEvent', true);
 
       // アニメーション定義
       Draggable.create(".box", {
@@ -26,7 +26,7 @@ export default defineComponent({
     });
 
     // ナビゲータ表示通知
-    onUnmounted(() => context.emit('showNavEvent', true));
+    onUnmounted(() => context.emit('mountedEvent', false));
 
     return { }
   },

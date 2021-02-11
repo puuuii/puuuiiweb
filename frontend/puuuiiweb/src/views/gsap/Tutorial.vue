@@ -39,7 +39,7 @@ export default defineComponent({
     let tween: GSAPAnimation;
     onMounted(() => {
       // ナビゲータ非表示通知
-      context.emit('showNavEvent', false);
+      context.emit('mountedEvent', true);
 
       // アニメーション定義
       gsap.to('.circle', {x: 500, duration: 0.5, yoyo: true, repeat: -1, onRepeat: ()=>console.log('onRepeat!')});
@@ -58,10 +58,7 @@ export default defineComponent({
 
     onUnmounted(() => {
       // ナビゲータ表示通知
-      context.emit('showNavEvent', true);
-
-      // 全てのアニメーションを削除
-      gsap.globalTimeline.clear();
+      context.emit('mountedEvent', false);
     });
 
     // 関数定義
