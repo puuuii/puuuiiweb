@@ -5,6 +5,7 @@ import Tutorial from '../views/gsap/Tutorial.vue'
 import Atom from '../views/gsap/Atom.vue'
 import Scroll from '../views/gsap/Scroll.vue'
 import Draggable from '../views/gsap/Draggable.vue'
+import Pixi from '../views/gsap/Pixi.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -32,6 +33,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'draggable',
         component: Draggable,
+      },
+      {
+        path: 'pixi',
+        component: Pixi,
       },
     ],
   },

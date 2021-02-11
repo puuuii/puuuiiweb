@@ -4,7 +4,8 @@
       <router-link to="/gsap/tutorial">Tutorial</router-link> |
       <router-link to="/gsap/atom">Atom</router-link> |
       <router-link to="/gsap/scroll">Scroll</router-link> |
-      <router-link to="/gsap/draggable">Draggable</router-link>
+      <router-link to="/gsap/draggable">Draggable</router-link> |
+      <router-link to="/gsap/pixi">Pixi</router-link>
     </div>
     <router-view @showNavEvent="showNav"/>
   </div>
