@@ -8,6 +8,7 @@ import Draggable from '../views/gsap/Draggable.vue'
 import Pixi from '../views/gsap/Pixi.vue'
 import Text from '../views/gsap/Text.vue'
 import ScrollTo from '../views/gsap/ScrollTo.vue'
+import Particle from '../views/gsap/Particle.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -47,6 +48,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'scrollto',
         component: ScrollTo,
+      },
+      {
+        path: 'particle',
+        component: Particle,
       },
     ],
   },

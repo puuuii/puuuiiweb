@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <div id="nav" v-show="navShow">
       <router-link to="/">Home</router-link> |
       <router-link to="/gsap">Gsap</router-link>
@@ -9,7 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
+import { gsap } from "gsap";
 
 export default defineComponent({
   name: 'App',
@@ -20,7 +21,14 @@ export default defineComponent({
     // ナビゲーター表示制御
     const showNav = (show: boolean) => navShow.value = show;
 
+    onUnmounted(() => {
+      console.log('aaa')
+    });
+
     return { navShow, showNav }
   }
 });
 </script>
+
+<style>
+</style>

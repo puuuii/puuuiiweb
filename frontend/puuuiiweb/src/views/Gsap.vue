@@ -7,7 +7,8 @@
       <router-link to="/gsap/draggable">Draggable</router-link> |
       <router-link to="/gsap/pixi">Pixi</router-link> |
       <router-link to="/gsap/text">Text</router-link> |
-      <router-link to="/gsap/scrollto">ScrollTo</router-link>
+      <router-link to="/gsap/scrollto">ScrollTo</router-link> |
+      <router-link to="/gsap/particle">Particle</router-link>
     </div>
     <router-view @mountedEvent="onGsapMounted"/>
   </div>
