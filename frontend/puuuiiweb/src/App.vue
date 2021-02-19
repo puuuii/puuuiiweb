@@ -1,16 +1,16 @@
 <template>
   <div class="body">
     <div id="nav" v-show="navShow">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/gsap">Gsap</router-link>
     </div>
     <router-view @showNavEvent="showNav"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
-import { gsap } from "gsap";
+import 'uikit/dist/js/uikit.min.js'
+import 'uikit/dist/js/uikit-icons.min.js'
+import 'uikit/dist/css/uikit.min.css'
+import { defineComponent, ref, onUnmounted } from 'vue';
 
 export default defineComponent({
   name: 'App',
@@ -20,10 +20,6 @@ export default defineComponent({
 
     // ナビゲーター表示制御
     const showNav = (show: boolean) => navShow.value = show;
-
-    onUnmounted(() => {
-      console.log('aaa')
-    });
 
     return { navShow, showNav }
   }
