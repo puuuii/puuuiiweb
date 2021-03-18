@@ -1,6 +1,7 @@
 import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Gsap from '../views/Gsap.vue'
+import Wasm from '../views/Wasm.vue'
 import Tutorial from '../views/gsap/Tutorial.vue'
 import Atom from '../views/gsap/Atom.vue'
 import Scroll from '../views/gsap/Scroll.vue'
@@ -9,6 +10,7 @@ import Pixi from '../views/gsap/Pixi.vue'
 import Text from '../views/gsap/Text.vue'
 import ScrollTo from '../views/gsap/ScrollTo.vue'
 import Particle from '../views/gsap/Particle.vue'
+import HighLow from '../views/wasm/HighLow.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -54,6 +56,17 @@ const routes: Array<RouteRecordRaw> = [
         component: Particle,
       },
     ],
+  },
+  {
+    path: '/wasm',
+    name: 'Wasm',
+    component: Wasm,
+    children: [
+      {
+        path: 'highlow',
+        component: HighLow,
+      },
+    ]
   },
 ]
 
