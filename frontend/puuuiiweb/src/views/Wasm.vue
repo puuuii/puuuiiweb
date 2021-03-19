@@ -1,6 +1,8 @@
 <template>
   <div class="body">
-    <router-link to="/wasm/highlow">High&Low</router-link> |
+    <nav>
+      <router-link to="/wasm/highlow">High&Low</router-link> |
+    </nav>
     <router-view/>
   </div>
 </template>
