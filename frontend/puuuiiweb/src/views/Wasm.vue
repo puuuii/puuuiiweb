@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div id="wasm body">
     <nav>
       <router-link to="/wasm/highlow">High&Low</router-link> |
     </nav>
@@ -8,16 +8,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent, onUnmounted } from 'vue';
 
 export default defineComponent({
   name: 'Wasm',
 
   setup(props, context) {
-    onMounted(() => {
+    onUnmounted(() => {
+      console.log('unmount!');
+      document.getElementById('wasm body')
     });
 
-    return {  }
+    return { }
   }
 });
 </script>

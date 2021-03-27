@@ -23,6 +23,7 @@ import { useRouter } from 'vue-router'
 export default defineComponent({
   name: 'App',
 
+
   setup() {
     // 変数定義
     const router = useRouter();
@@ -46,11 +47,9 @@ export default defineComponent({
    width: 100%;
    height: 100vh;
  }
-
  .uk-navbar-container:not(.uk-navbar-transparent) {
     background: rgba(0, 0, 0, 0);
   }
-
   .uk-navbar-nav>li.uk-active>a {
       color: lightgray;
   }
