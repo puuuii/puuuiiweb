@@ -1,14 +1,10 @@
 <template>
   <div class="nav">
-    <nav class="uk-navbar-container" uk-navbar>
-      <div class="uk-navbar-center">
-        <ul class="uk-navbar-nav">
-          <li class="uk-active" v-for="(map, i) in LinkMappings" :key="i">
-            <router-link :to=map.url>{{ map.label }}</router-link>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <router-link :to=LinkMappings[0].url>{{ LinkMappings[0].label }}</router-link>
+    <span v-for="i in space_total" :key="i">&nbsp;</span>
+    <router-link :to=LinkMappings[1].url>{{ LinkMappings[1].label }}</router-link>
+    <span v-for="i in space_total" :key="i">&nbsp;</span>
+    <router-link :to=LinkMappings[2].url>{{ LinkMappings[2].label }}</router-link>
     <router-view/>
   </div>
 </template>
@@ -23,7 +19,6 @@ import { useRouter } from 'vue-router'
 export default defineComponent({
   name: 'App',
 
-
   setup() {
     // 変数定義
     const router = useRouter();
@@ -32,25 +27,35 @@ export default defineComponent({
       {label: 'GSAP', url: '/gsap'},
       {label: 'WASM', url: '/wasm'},
     ];
+    const space_total = 5;
 
     // メソッド定義
     const transitionTo = (url: string) => router.push(url);
 
-    return { LinkMappings, transitionTo }
+    return { LinkMappings, transitionTo, space_total }
   }
 });
 </script>
 
 <style>
- body {
-   background-color: #28282c;
-   width: 100%;
-   height: 100vh;
- }
- .uk-navbar-container:not(.uk-navbar-transparent) {
-    background: rgba(0, 0, 0, 0);
-  }
-  .uk-navbar-nav>li.uk-active>a {
-      color: lightgray;
-  }
+body {
+  background-color: #28282c;
+  width: 100%;
+  height: 100vh;
+}
+a:link { color: lightgra; }
+a:visited { color: lightgray }
+a:hover { color: lightgray }
+a:active { color: lightgray }
+.nav {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+.uk-navbar-container:not(.uk-navbar-transparent) {
+  background: rgba(0, 0, 0, 0);
+}
+.uk-navbar-nav>li.uk-active>a {
+  color: lightgray;
+}
 </style>
