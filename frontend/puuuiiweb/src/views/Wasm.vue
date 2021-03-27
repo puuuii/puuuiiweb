@@ -14,9 +14,13 @@ export default defineComponent({
   name: 'Wasm',
 
   setup(props, context) {
+    // アンマウント時にキャンバスを削除
     onUnmounted(() => {
-      console.log('unmount!');
-      document.getElementById('wasm body')
+      const canvases = document.getElementsByTagName('canvas');
+      for (let canvas of canvases as any) {
+        if (!canvas || !canvas.parentNode) return;
+        canvas.parentNode.removeChild(canvas);
+      }
     });
 
     return { }

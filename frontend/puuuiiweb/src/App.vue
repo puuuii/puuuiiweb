@@ -29,8 +29,8 @@ export default defineComponent({
     const router = useRouter();
     const LinkMappings = [
       {label: 'TOP', url: '/'},
-      {label: 'GSAP', url: 'gsap'},
-      {label: 'WASM', url: 'wasm'},
+      {label: 'GSAP', url: '/gsap'},
+      {label: 'WASM', url: '/wasm'},
     ];
 
     // メソッド定義
