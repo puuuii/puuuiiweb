@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="gsap_tutorial_body">
     <div class="circle"></div>
     <br>
     <div class="square"></div>
@@ -76,6 +76,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  .gsap_tutorial_body {
+    height: auto;
+  }
   .circle, .stagger{
     background-color:red;
     height: 5em;

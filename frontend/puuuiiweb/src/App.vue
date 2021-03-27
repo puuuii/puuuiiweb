@@ -1,10 +1,12 @@
 <template>
-  <div class="nav">
-    <router-link :to=LinkMappings[0].url>{{ LinkMappings[0].label }}</router-link>
-    <span v-for="i in space_total" :key="i">&nbsp;</span>
-    <router-link :to=LinkMappings[1].url>{{ LinkMappings[1].label }}</router-link>
-    <span v-for="i in space_total" :key="i">&nbsp;</span>
-    <router-link :to=LinkMappings[2].url>{{ LinkMappings[2].label }}</router-link>
+  <div class="nav_body">
+    <nav>
+      <router-link :to=LinkMappings[0].url>{{ LinkMappings[0].label }}</router-link>
+      <span v-for="i in space_total" :key="i">&nbsp;</span>
+      <router-link :to=LinkMappings[1].url>{{ LinkMappings[1].label }}</router-link>
+      <span v-for="i in space_total" :key="i">&nbsp;</span>
+      <router-link :to=LinkMappings[2].url>{{ LinkMappings[2].label }}</router-link>
+    </nav>
     <router-view/>
   </div>
 </template>
@@ -41,13 +43,9 @@ export default defineComponent({
 body {
   background-color: #28282c;
   width: 100%;
-  height: 100vh;
 }
-a:link { color: lightgra; }
-a:visited { color: lightgray }
-a:hover { color: lightgray }
-a:active { color: lightgray }
-.nav {
+a:link, a:visited, a:hover, a:active { color: lightgray; }
+nav {
   position: fixed;
   width: 100%;
   text-align: center;

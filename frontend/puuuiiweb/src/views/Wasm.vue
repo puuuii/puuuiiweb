@@ -20,4 +20,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  nav {
+    top: 1.5rem;
+  }
 </style>

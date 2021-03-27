@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="gsapNav" v-show="navShow">
+    <nav>
       <router-link to="/gsap/tutorial">Tutorial</router-link> |
       <router-link to="/gsap/atom">Atom</router-link> |
       <router-link to="/gsap/scroll">Scroll</router-link> |
@@ -9,7 +9,7 @@
       <router-link to="/gsap/text">Text</router-link> |
       <router-link to="/gsap/scrollto">ScrollTo</router-link> |
       <router-link to="/gsap/particle">Particle</router-link>
-    </div>
+    </nav>
     <router-view @mountedEvent="onGsapMounted"/>
   </div>
 </template>
@@ -22,13 +22,8 @@ export default defineComponent({
   name: 'Gsap',
 
   setup(props, context) {
-    let navShow = ref<boolean>(true);
-
     // ナビゲータ表示制御
     const onGsapMounted = (isMounted: boolean) => {
-      context.emit('showNavEvent', !isMounted);
-      navShow.value = !isMounted;
-
       // 全てのアニメーションを削除
       if (!isMounted) {
         gsap.globalTimeline.clear(true);
@@ -42,10 +37,13 @@ export default defineComponent({
       }
     };
 
-    return { navShow, onGsapMounted }
+    return { onGsapMounted }
   }
 });
 </script>
 
 <style scoped>
+  nav {
+    top: 1.5rem;
+  }
 </style>
