@@ -1,5 +1,4 @@
 import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
 import Gsap from '../views/Gsap.vue'
 import Wasm from '../views/Wasm.vue'
 import Tutorial from '../views/gsap/Tutorial.vue'
@@ -13,11 +12,6 @@ import Particle from '../views/gsap/Particle.vue'
 import HighLow from '../views/wasm/HighLow.vue'
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
   {
     path: '/gsap',
     name: 'Gsap',
