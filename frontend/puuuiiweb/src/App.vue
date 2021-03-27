@@ -7,7 +7,7 @@
       <span v-for="i in space_total" :key="i">&nbsp;</span>
       <router-link :to=LinkMappings[2].url>{{ LinkMappings[2].label }}</router-link>
     </nav>
-    <router-view/>
+    <router-view class="router-view"/>
   </div>
 </template>
 
@@ -56,4 +56,9 @@ nav {
 .uk-navbar-nav>li.uk-active>a {
   color: lightgray;
 }
+
+.router-view {
+  padding-top: 1.5rem;
+}
+
 </style>

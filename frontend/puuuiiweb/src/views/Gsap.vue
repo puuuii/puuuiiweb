@@ -10,7 +10,7 @@
       <router-link to="/gsap/scrollto">ScrollTo</router-link> |
       <router-link to="/gsap/particle">Particle</router-link>
     </nav>
-    <router-view @mountedEvent="onGsapMounted"/>
+    <router-view class="router-view" @mountedEvent="onGsapMounted"/>
   </div>
 </template>
 
@@ -43,7 +43,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  nav {
-    top: 1.5rem;
-  }
 </style>

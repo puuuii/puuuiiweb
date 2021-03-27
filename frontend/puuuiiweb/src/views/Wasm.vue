@@ -3,7 +3,7 @@
     <nav>
       <router-link to="/wasm/highlow">High&Low</router-link>
     </nav>
-    <router-view/>
+    <router-view class="router-view"/>
   </div>
 </template>
 
@@ -20,7 +20,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  nav {
-    top: 1.5rem;
-  }
 </style>
