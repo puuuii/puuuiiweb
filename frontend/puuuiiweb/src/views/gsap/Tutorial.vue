@@ -50,12 +50,13 @@ export default defineComponent({
         .to('.square2', {x: body_width - obj_width})
         .to('.square2', {y: body_height - obj_height}, '-=0.5')
         .to('.square2', {x: 0}, '>0.5')
-        .to('.square2', {y: 0});
+        .to('.square2', {y: 0})
+        .repeat(-1);
       gsap.to('.circles', {
         y: body_height - obj_height,
-        duration: 4, ease: Bounce.easeOut,
+        duration: 4, ease: Bounce.easeOut, repeat: -1,
         stagger: {
-          each: 0.2, from: "start"
+          each: 0.2, from: "center"
         }
       })
     });
