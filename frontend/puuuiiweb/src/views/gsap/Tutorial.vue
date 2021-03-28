@@ -1,13 +1,33 @@
 <template>
   <div class="gsap-tutorial-body">
+
     <div class="obj circle"></div>
     <div class="obj square"></div>
     <div class="obj triangle"></div>
     <div class="obj square2"></div>
+
+    <div class="command">
+      <div class="obj square3"></div>
+      <button class="commands uk-button uk-button-default" type="button">Commands</button>
+      <div uk-dropdown>
+          <ul class="uk-nav uk-dropdown-nav">
+            <li><button class="uk-button uk-button-text" @click="play">play</button></li>
+            <li><button class="uk-button uk-button-text" @click="pause">pause</button></li>
+            <li><button class="uk-button uk-button-text" @click="reverse">reverse</button></li>
+            <li><button class="uk-button uk-button-text" @click="seek(0.5)">seek</button></li>
+            <li><button class="uk-button uk-button-text" @click="progress">progress</button></li>
+            <li><button class="uk-button uk-button-text" @click="timeScale(0.5)">timeScale0.5</button></li>
+            <li><button class="uk-button uk-button-text" @click="timeScale(2)">timeScale2</button></li>
+            <li><button class="uk-button uk-button-text" @click="restart">restart</button></li>
+          </ul>
+      </div>
+    </div>
+
     <div class="uk-flex uk-flex-center">
       <div class="uk-card uk-card-default uk-card-body circles"></div>
       <div class="uk-card uk-card-default uk-card-body uk-margin-left circles" v-for="i in 8" :key="i"></div>
     </div>
+
   </div>
 </template>
 
@@ -24,6 +44,13 @@ export default defineComponent({
 
     // 関数定義
     const rem2px = (rem) => rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const play = () => tween.play();
+    const pause = () => tween.pause();
+    const reverse = () => tween.reverse();
+    const seek = (n: number) => tween.seek(n);
+    const progress = () => tween.progress();
+    const timeScale = (scale: number) => tween.timeScale(scale);
+    const restart = () => tween.restart();
 
     onMounted(() => {
       const body_width = document.documentElement.clientWidth;
@@ -59,7 +86,10 @@ export default defineComponent({
           each: 0.2, from: "center"
         }
       })
+      tween = gsap.to('.square3', {x: body_width - obj_width, duration: 3, paused: true});
     });
+
+    return {play, pause, reverse, seek, progress, timeScale, restart}
   }
 });
 </script>
@@ -90,5 +120,16 @@ export default defineComponent({
   }
   .square2 {
     background-color: #8EE3C8;
+  }
+  .command {
+    position: absolute;
+    bottom: 0;
+  }
+  .square3 {
+    position: relative;
+    background-color: lightgray;
+  }
+  .commands {
+    color: lightgray
   }
 </style>
