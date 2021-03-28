@@ -16,14 +16,12 @@ import 'uikit/dist/js/uikit.min.js'
 import 'uikit/dist/js/uikit-icons.min.js'
 import 'uikit/dist/css/uikit.min.css'
 import { defineComponent, } from 'vue';
-import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'App',
 
   setup() {
     // 変数定義
-    const router = useRouter();
     const LinkMappings = [
       {label: 'TOP', url: '/'},
       {label: 'GSAP', url: '/gsap'},
@@ -32,9 +30,8 @@ export default defineComponent({
     const space_total = 5;
 
     // メソッド定義
-    const transitionTo = (url: string) => router.push(url);
 
-    return { LinkMappings, transitionTo, space_total }
+    return { LinkMappings, space_total }
   }
 });
 </script>
@@ -43,22 +40,28 @@ export default defineComponent({
 body {
   background-color: #28282c;
   width: 100%;
-}
-a:link, a:visited, a:hover, a:active { color: lightgray; }
-nav {
-  position: fixed;
-  width: 100%;
-  text-align: center;
-}
-.uk-navbar-container:not(.uk-navbar-transparent) {
-  background: rgba(0, 0, 0, 0);
-}
-.uk-navbar-nav>li.uk-active>a {
   color: lightgray;
 }
-
+#app {
+  height: 100vh;
+}
+a:link, a:visited {
+  color: lightgray;
+  text-decoration: none;
+}
+a:hover, a:active {
+  color: whitesmoke;
+}
+.nav_body {
+  height: 100%;
+}
+nav {
+  width: 100%;
+  height: 2rem;
+  text-align: center;
+}
 .router-view {
-  padding-top: 1.5rem;
+  height: calc(100% - 2rem);
 }
 
 </style>

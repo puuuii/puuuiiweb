@@ -1,115 +1,93 @@
 <template>
-  <div class="gsap_tutorial_body">
-    <div class="circle"></div>
-    <br>
-    <div class="square"></div>
-    <br>
-    <div class="triangle"></div>
-    <br>
-    <div class="roundsquare1"></div>
-    <div class="roundsquare2"></div>
-    <div class="roundsquare3"></div>
-    <br>
-    <div class="pursquqre1"></div>
-    <div class="pursquqre2"></div>
-    <div class="pursquqre3"></div>
-    <br>
-    <div v-for="i in 5" :key="i" class="stagger"></div>
-    <br>
-    <div class="commandSquare"></div>
-    <button @click="play">play</button>
-    <button @click="pause">pause</button>
-    <button @click="reverse">reverse</button>
-    <button @click="seek(0.5)">seek</button>
-    <button @click="progress">progress</button>
-    <button @click="timeScale(0.5)">timeScale0.5</button>
-    <button @click="timeScale(2)">timeScale2</button>
-    <button @click="restart">restart</button>
+  <div class="gsap-tutorial-body">
+    <div class="obj circle"></div>
+    <div class="obj square"></div>
+    <div class="obj triangle"></div>
+    <div class="obj square2"></div>
+    <div class="uk-flex uk-flex-center">
+      <div class="uk-card uk-card-default uk-card-body circles"></div>
+      <div class="uk-card uk-card-default uk-card-body uk-margin-left circles" v-for="i in 8" :key="i"></div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from 'vue';
-import { gsap } from "gsap";
+import { defineComponent, onMounted } from 'vue';
+import { gsap, Bounce } from "gsap";
 
 export default defineComponent({
   name: 'Tutorial',
 
   setup(props, context) {
+    // 変数定義
     let tween: GSAPAnimation;
-    onMounted(() => {
-      // ナビゲータ非表示通知
-      context.emit('mountedEvent', true);
-
-      // アニメーション定義
-      gsap.to('.circle', {x: 500, duration: 0.5, yoyo: true, repeat: -1, onRepeat: ()=>console.log('onRepeat!')});
-      gsap.from('.square', {duration:4, scale: 2, onComplete: (msg)=>console.log(msg), onCompleteParams: ["done!"]});
-      gsap.fromTo('.triangle', {opacity: 0}, {opacity: 1, x: 100, duration: 2});
-      gsap.to('.roundsquare1', {x:500, ease:"power2.in", duration: 2});
-      gsap.to('.roundsquare2', {x:500, ease:"power2.inout", duration: 2});
-      gsap.to('.roundsquare3', {x:500, ease:"power2.out", duration: 2});
-      gsap.timeline({defaults: {x: 300, duration: 1}})
-        .to('.pursquqre1', {ease:"bounce.in"})
-        .to('.pursquqre2', {ease:"bounce.out"}, '-=0.5')
-        .to('.pursquqre3', {x: 400, ease:"bounce.inOut"}, '<0.5');
-      gsap.to('.stagger', {duration: 0.5, stagger: 0.2, x: 500});
-      tween = gsap.to('.commandSquare', {x: 500, duration: 3, paused: true});
-    });
-
-    onUnmounted(() => {
-      // ナビゲータ表示通知
-      context.emit('mountedEvent', false);
-    });
 
     // 関数定義
-    const play = () => tween.play();
-    const pause = () => tween.pause();
-    const reverse = () => tween.reverse();
-    const seek = (n: number) => tween.seek(n);
-    const progress = () => tween.progress();
-    const timeScale = (scale: number) => tween.timeScale(scale);
-    const restart = () => tween.restart();
+    const rem2px = (rem) => rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 
-    return { play, pause, reverse, seek, progress, timeScale, restart }
+    onMounted(() => {
+      const body_width = document.documentElement.clientWidth;
+      const body_height = document.getElementsByClassName('gsap-tutorial-body')[0].clientHeight;
+      const obj_width = rem2px(5);
+      const obj_height = rem2px(5);
+
+      // アニメーション定義
+      gsap.to('.circle', {
+        x: body_width - obj_width*2.5, y: body_height - obj_height*2.5, scale: 4,
+        duration: 1, yoyo: true, repeat: -1,
+        onRepeat: () => console.log('onRepeat!'),
+      });
+      gsap.from('.square', {
+        x: body_width - obj_width*1.5, scale: 2, ease: "power4.inout",
+        duration:4,
+        onComplete: (msg) => console.log(msg), onCompleteParams: ["done!!!"]
+      });
+      gsap.fromTo('.triangle',
+        {opacity: 0},
+        {opacity: 1, x: (body_width - obj_width)/2, y: (body_height - obj_height)/2, duration: 2}
+      );
+      gsap.timeline({defaults: {duration: 1, ease: "power4.inout"}})
+        .to('.square2', {x: body_width - obj_width})
+        .to('.square2', {y: body_height - obj_height}, '-=0.5')
+        .to('.square2', {x: 0}, '>0.5')
+        .to('.square2', {y: 0});
+      gsap.to('.circles', {
+        y: body_height - obj_height,
+        duration: 4, ease: Bounce.easeOut,
+        stagger: {
+          each: 0.2, from: "start"
+        }
+      })
+    });
   }
 });
 </script>
 
 <style scoped>
   .gsap_tutorial_body {
-    height: auto;
+    width: 100%;
+    height: 100%;
   }
-  .circle, .stagger{
-    background-color:red;
-    height: 5em;
-    width: 5em;
+  .obj {
+    position: absolute;
+    background-color: #2673B8;
+    width: 5rem;
+    height: 5rem;
+  }
+  .circle {
     border-radius: 100%
   }
-
-  .square, .commandSquare{
-    background-color: blue;
-    height: 5em;
-    width: 5em;
-  }
-
   .triangle{
-    width: 0;
-    height: 0;
+    background-color: rgba(0, 0, 0, 0);
     border-style: solid;
-    border-width: 0 50px 86.6px 50px;
-    border-color: transparent transparent green transparent;
+    border-width: 0 2.5rem 5rem 2.5rem;
+    border-color: transparent transparent #2673B8 transparent;
   }
-
-  .roundsquare1, .roundsquare2, .roundsquare3{
-    background-color:orange;
-    height: 5em;
-    width: 5em;
-    border-radius: 20%
+  .circles {
+    border-radius: 100%;
+    background-color: #8EE3C8;
   }
-
-  .pursquqre1, .pursquqre2, .pursquqre3{
-    background-color: purple;
-    height: 5em;
-    width: 5em;
+  .square2 {
+    background-color: #8EE3C8;
   }
 </style>
