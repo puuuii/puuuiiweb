@@ -20,10 +20,6 @@
       <div class="panel" v-for="i in count_horiz_item" :key="i">{{ i }}</div>
     </section>
 
-    <section class="lazy">
-
-    </section>
-
   </div>
 </template>
 
@@ -179,11 +175,5 @@ export default defineComponent({
     background-color: #111;
     border: 1px solid lightgray;
     flex: auto;
-  }
-  .lazy {
-    height: 100vh;
-    position: relative;
-    z-index: 2;
-    background-color: #080808;
   }
 </style>
