@@ -1,16 +1,26 @@
 <template>
-  <div class="body">
-    <div class="text1"></div>
-    <div class="text2"></div>
-    <div class="text3"></div>
-    <div class="text4">This is the new text !!</div>
-    <div class="text5">.................... !!</div>
+  <div class="gsap-text-body">
+
+    <section class="basic">
+      <div class="basic-text1"></div>
+      <div class="basic-text2"></div>
+      <div class="basic-text3"></div>
+      <div class="basic-text4">This is the new text !!</div>
+      <div class="basic-text5">.................... !!</div>
+    </section>
+
+    <section class="advanced">
+      <p class="split-container">
+        <span class="split" v-for="(c,i) in text" :key="i">{{ c }}</span>
+      </p>
+    </section>
+
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from 'vue';
-import { gsap } from "gsap";
+import { defineComponent, onMounted } from 'vue';
+import { gsap, Back } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 gsap.registerPlugin(TextPlugin);
 
@@ -18,50 +28,35 @@ export default defineComponent({
   name: 'Text',
 
   setup(props, context) {
+    // 変数定義
+    const rem2px = (rem) => rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const text = "これはスプリッドアニメーションの実装例です。"
+
     onMounted(() => {
-      // ナビゲータ非表示通知
-      context.emit('mountedEvent', true);
-
       // アニメーション定義
-      gsap.to(".text1", {duration: 1, text: "This is the new text !!", ease: "power3.out"});
-      gsap.to(".text2", {duration: 1, text: {value: "This is the new text !!", delimiter: " "}, ease: "power1.out"});
-      gsap.to(".text3", {text: {value: "This is the new text !!", speed: 5}});
-      gsap.from(".text4", {duration: 2, text: ""});
-      gsap.to(".text5", {duration: 2, text: "This is the new text !!"});
+      gsap.to(".basic-text1", {duration: 1, text: "This is the new text !!", ease: "power3.out"});
+      gsap.to(".basic-text2", {duration: 1, text: {value: "This is the new text !!", delimiter: " "}, ease: "power1.out"});
+      gsap.to(".basic-text3", {text: {value: "This is the new text !!", speed: 5}});
+      gsap.from(".basic-text4", {duration: 2, text: ""});
+      gsap.to(".basic-text5", {duration: 2, text: "This is the new text !!"});
+
+      gsap.timeline({defaults: {duration: 0.8, stagger: 0.02, ease: Back.easeInOut.config(rem2px(1))}})
+        .from(".split", {y: rem2px(1), ease: Back.easeInOut.config(rem2px(1))})
+        .from(".split", {yPercent: -300 , ease: "power3.inOut"}, "<")
+        .from(".split", {scale: 0}, "<")
+        .from(".split", {alpha: 0, ease: "power2.in"}, "<");
     });
 
-    // ナビゲータ表示通知
-    onUnmounted(() => {
-      context.emit('mountedEvent', false)
-    });
-
-    return { }
+    return { text }
   },
 
-  methods: {
-    setAnimation(): void {
-
-    }
-  }
 });
 </script>
 
 <style scoped>
-  .body {
-    height: 350vh;
-  }
-  .scroll {
-    position: absolute;
-    top: 150vh;
-    left: 0;
-    width: 100%;
-    height: 50vh;
-    background-color: lightgray;
-    padding: 20px;
-  }
-  .box {
-    background-color: black;
-    width: 10vw;
-    height: 10vw;
+  .split-container {
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
 </style>
