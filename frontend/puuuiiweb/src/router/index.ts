@@ -10,6 +10,7 @@ import Pixi from '../views/gsap/Pixi.vue'
 import Text from '../views/gsap/Text.vue'
 import ScrollTo from '../views/gsap/ScrollTo.vue'
 import Particle from '../views/gsap/Particle.vue'
+import Css from '../views/gsap/css.vue'
 import HighLow from '../views/wasm/HighLow.vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -55,6 +56,10 @@ const routes: Array<RouteRecordRaw> = [
         path: 'particle',
         component: Particle,
       },
+      {
+        path: 'css',
+        component: Css,
+      }
     ],
   },
   {
