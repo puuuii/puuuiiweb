@@ -1,14 +1,17 @@
 <template>
-  <div class="body">
-    <a class="button" v-for="i in 3" :key="i" @click="scrollToSection(i)">sec{{ i }}</a>
-    <section class="sec1">　　　　　　　　　　this is section 1</section>
-    <section class="sec2">　　　　　　　　　　this is section 2</section>
-    <section class="sec3">　　　　　　　　　　this is section 3</section>
+  <div class="gsap-scrollto-body">
+    <div class="buttons">
+      <a class="button" @click="scrollToTop()">top</a>
+      <a class="button" v-for="i in 3" :key="i" @click="scrollToSection(i)">sec{{ i }}</a>
+    </div>
+    <section class="sec1">this is section 1</section>
+    <section class="sec2">this is section 2</section>
+    <section class="sec3">this is section 3</section>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from 'vue';
+import { defineComponent } from 'vue';
 import { gsap, Elastic } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
@@ -18,30 +21,31 @@ export default defineComponent({
   name: 'ScrollTo',
 
   setup(props, context) {
-    onMounted(() => {
-      // ナビゲータ非表示通知
-      context.emit('mountedEvent', true);
-    });
-
-    // ナビゲータ表示通知
-    onUnmounted(() => context.emit('mountedEvent', false));
-
+    const scrollToTop = (i: number) => gsap.to(window, {duration: 1, scrollTo: { y: 0 }, ease: "power3.inOut"});
     const scrollToSection = (i: number) => gsap.to(window, {duration: 1, scrollTo: { y: `.sec${i}` }, ease: Elastic.easeOut});
 
-    return { scrollToSection }
+    return { scrollToTop, scrollToSection }
   },
 });
 </script>
 
 <style scoped>
-  .body {
+  .gsap-scrollto-body {
     width: 100%;
+    height: 300vh;
+  }
+  .buttons {
+    width: 100%;
+    position: fixed;
+    display:flex;
+    justify-content:center;
   }
   .button {
-    position: fixed;
-    background-color: white;
-    padding: 0.5rem;
-    border-radius: 10%
+    padding: 0.5rem 2rem;
+    margin: 1rem;
+    border: 1px solid lightgray;
+    color: lightgray;
+    border-radius: 0.5rem;
   }
   .button:nth-child(2) {
     left: 50px;
@@ -49,16 +53,19 @@ export default defineComponent({
   .button:nth-child(3) {
     left: 100px;
   }
+  section {
+    height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
   .sec1 {
-    height: 50vh;
-    background-color: #dddddd;
+    background-color: #222;
   }
   .sec2 {
-    height: 100vh;
-    background-color: #cccccc;
+    background-color: #28282c;;
   }
   .sec3 {
-    height: 150vh;
-    background-color: #bbbbbb;
+    background-color: #222;
   }
 </style>
