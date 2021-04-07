@@ -42,7 +42,7 @@ export default defineComponent({
   }
   .button {
     padding: 0.5rem 2rem;
-    margin: 1rem;
+    margin: 0.1rem;
     border: 1px solid lightgray;
     color: lightgray;
     border-radius: 0.5rem;
