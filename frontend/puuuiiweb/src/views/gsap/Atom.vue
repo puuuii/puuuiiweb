@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div class="gsap-atom-body">
     <div class="atom" :style="styleAtomLength">
       <div class="orbit">
         <div class="path">
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from 'vue';
+import { defineComponent, onMounted } from 'vue';
 import { gsap } from "gsap";
 
 export default defineComponent({
@@ -35,7 +35,6 @@ export default defineComponent({
 
   setup(props, context) {
     // 各種スタイル定義
-    const styleFullHeight = {height: `${document.documentElement.clientHeight}px`}
     const atomLength = Math.min(document.documentElement.clientHeight, document.documentElement.clientWidth);
     const styleAtomLength = {height: `${atomLength}px`, width: `${atomLength}px`, left: `${document.documentElement.clientWidth/2 - atomLength/2}px`};
     const nucleusLength = atomLength/15;
@@ -45,9 +44,6 @@ export default defineComponent({
 
     let tween: GSAPAnimation;
     onMounted(() => {
-      // ナビゲータ非表示通知
-      context.emit('mountedEvent', true);
-
       // アニメーション定義
       const tl = gsap.timeline(),
             atom = document.querySelector('.atom'),
@@ -96,10 +92,7 @@ export default defineComponent({
           timeScaleTween.reverse();
         });
       }
-    }),
-
-    // ナビゲータ表示通知
-    onUnmounted(() => context.emit('mountedEvent', false));
+    })
 
     return { styleAtomLength, styleNucleusLength, styleElectronLength }
   }
@@ -107,10 +100,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .body {
-    width: 100%;
-    height: 100vh;
-    background-color: gray;
+  .gsap-atom-body {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -118,28 +108,28 @@ export default defineComponent({
     display:none;
   }
   .atom {
-    position: absolute;
+    position: fixed;
     left: 50%;
     transform-style: preserve-3d;
   }
   .nucleus  {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     margin: auto;
     border-radius: 50%;
-    background: #272727;
+    background: #8EE3C8;
   }
   .orbit {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 5px solid #ccc;
+    border: 5px solid #2673B8;
     transform-style: preserve-3d;
     transform: rotateX(80deg) rotateY(20deg);
   }
@@ -159,9 +149,9 @@ export default defineComponent({
     transform-style: preserve-3d;
   }
   .electron {
-    position: absolute;
+    position: fixed;
     border-radius: 50%;
-    background: #ccc;
+    background: #2673B8;
     transform: rotateX(-80deg) rotateY(-20deg);
   }
   .electron:nth-child(2) {
