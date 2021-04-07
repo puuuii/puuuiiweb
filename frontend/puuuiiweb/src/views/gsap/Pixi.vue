@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from 'vue';
+import { defineComponent, onMounted } from 'vue';
 import * as PIXI from "pixi.js";
 import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin";
@@ -18,9 +18,6 @@ export default defineComponent({
 
   setup(props, context) {
     onMounted(() => {
-      // ナビゲータ非表示通知
-      context.emit('mountedEvent', true);
-
       // アニメーション定義
       var app = new PIXI.Application({
         width:300,
@@ -32,11 +29,6 @@ export default defineComponent({
       app.stage.addChild(image);
       gsap.to(image, {duration: 1, pixi:{blur:20}, repeat: -1, yoyo: true});
     });
-
-    // ナビゲータ表示通知
-    onUnmounted(() => context.emit('mountedEvent', false));
-
-    return { }
   },
 });
 </script>
