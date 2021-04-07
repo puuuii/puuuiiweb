@@ -37,6 +37,9 @@ export default defineComponent({
 </script>
 
 <style>
+html {
+  overflow: overlay
+}
 body {
   background-color: #28282c;
   width: 100%;
