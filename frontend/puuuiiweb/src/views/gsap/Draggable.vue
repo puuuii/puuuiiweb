@@ -1,11 +1,12 @@
 <template>
-  <div class="body">
-    <div class="box"></div>
+  <div class="gsap-draggable-body">
+    <div class="spinner"></div>
+    <div class="mover"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from 'vue';
+import { defineComponent, onMounted } from 'vue';
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable"
 gsap.registerPlugin(Draggable);
@@ -15,18 +16,19 @@ export default defineComponent({
 
   setup(props, context) {
     onMounted(() => {
-      // ナビゲータ非表示通知
-      context.emit('mountedEvent', true);
-
-      // アニメーション定義
-      Draggable.create(".box", {
-        bounds: ".body",
-        throwProps: true
+      // 位置移動オブジェクトのアニメーション設定
+      Draggable.create(".mover", {
+        bounds: ".gsap-draggable-body",
+        throwProps: true,
+        onDragEnd: function() { gsap.to('.spinner', { x: this.x, y: this.y, duration: 0.3, ease:"power4.inOut" }) }
       });
-    });
 
-    // ナビゲータ表示通知
-    onUnmounted(() => context.emit('mountedEvent', false));
+      // 回転オブジェクトのアニメーション設定
+      Draggable.create(".spinner", {
+        type: "rotation",
+      })
+
+    });
 
     return { }
   },
@@ -34,15 +36,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .body {
-    background-color: gray;
-    width: 100%;
-    height: 100vh;
+  .gsap-draggable-body {
   }
-  .box {
-    background-color: lightgray;
+  .spinner {
+    position: fixed;
     width: 10rem;
     height: 10rem;
-    border-radius: 25%;
+    background-color: #2673B8;
+  }
+  .mover {
+    position: fixed;
+    width: 5rem;
+    height: 5rem;
+    margin: 2.5rem;
+    border-radius: 50%;
+    background-color: #8EE3C8;
   }
 </style>
