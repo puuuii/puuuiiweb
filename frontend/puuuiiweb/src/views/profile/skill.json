@@ -29,8 +29,8 @@
         },
         "tool": {
             "title": "ツール・ソフト",
-            "labels": ["VSCode", "Excel", "Tableau", "PowerBI", "Git/github", "Davinci Resolve", "Aviutl", "FireAlpaca"],
-            "values": [4, 3, 4, 4, 4, 3, 4, 3]
+            "labels": ["VSCode", "Excel", "Tableau", "PowerBI", "Git/github", ["Docker", "Kubernetes"], "Davinci Resolve", "FireAlpaca"],
+            "values": [4, 3, 4, 4, 4, 3, 3, 3]
         },
         "os": {
             "title": "OS",
