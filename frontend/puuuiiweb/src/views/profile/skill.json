@@ -1,0 +1,41 @@
+{
+    "levels": {
+        "1": "「完全に理解した」",
+        "2": "調べつつなんとか",
+        "3": "まぁやれる",
+        "4": "人に教えられる",
+        "5": "第一人者"
+    },
+    "skill":{
+        "field": {
+            "title": "分野",
+            "labels": [ "DesktopApp", "WebApp", "NativeApp", "BackboneSystem", "Infrastructure", "DataScience", "Security", "UI/UX"],
+            "values": [3,2,2,1,2,3,2,2]
+        },
+        "lang": {
+            "title": "プログラム言語",
+            "labels": ["HTML/CSS", ["JavaScript", "(TypeScript)"], "Python", "Rust", "C/C++", "Swift", "Java", "PowerShell", "bash"],
+            "values": [3, 3, 4, 2, 2, 1, 1, 2, 2]
+        },
+        "library": {
+            "title": "ライブラリ",
+            "labels": ["vue", "Uikit", "numpy", "pandas", "plotly", "prophet", "flask"],
+            "values": [4, 2, 3, 3, 3, 3, 3]
+        },
+        "cloud": {
+            "title": "クラウド系",
+            "labels": [["AWS", "EC2"], ["AWS", "Redshift"], ["AWS", "lambda"], ["AWS", "DynamoDB"], ["Azure", "VM"], ["Azure", "AppService"], ["Azure", "DevOps"], ["GSP", "ComputeEngine"], ["GCP", "CloudFunctions"], ["GCP", "Firestore"]],
+            "values": [3, 3, 2, 2, 3, 2, 3, 3, 3, 3]
+        },
+        "tool": {
+            "title": "ツール・ソフト",
+            "labels": ["VSCode", "Excel", "Tableau", "PowerBI", "Git/github", "Davinci Resolve", "Aviutl", "FireAlpaca"],
+            "values": [4, 3, 4, 4, 4, 3, 4, 3]
+        },
+        "os": {
+            "title": "OS",
+            "labels": ["Windows", "Linux", "MacOS"],
+            "values": [3, 2, 1]
+        }
+    }
+}

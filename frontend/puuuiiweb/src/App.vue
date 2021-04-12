@@ -6,6 +6,8 @@
       <router-link :to=LinkMappings[1].url>{{ LinkMappings[1].label }}</router-link>
       <span v-for="i in space_total" :key="i">&nbsp;</span>
       <router-link :to=LinkMappings[2].url>{{ LinkMappings[2].label }}</router-link>
+      <span v-for="i in space_total" :key="i">&nbsp;</span>
+      <router-link :to=LinkMappings[3].url>{{ LinkMappings[3].label }}</router-link>
     </nav>
     <router-view class="router-view"/>
   </div>
@@ -24,6 +26,7 @@ export default defineComponent({
     // 変数定義
     const LinkMappings = [
       {label: 'TOP', url: '/'},
+      {label: 'PROFILE', url: '/profile'},
       {label: 'GSAP', url: '/gsap'},
       {label: 'WASM', url: '/wasm'},
     ];
@@ -38,15 +41,25 @@ export default defineComponent({
 
 <style>
 html {
-  overflow: overlay
+  overflow: overlay;
+  height: 100%;
+  background-color: #28282c;
 }
 body {
-  background-color: #28282c;
   width: 100%;
+  height: 100%;
   color: lightgray;
 }
+::-webkit-scrollbar{
+  background: rgba(0,0,0,0);
+  width: 0.25rem;
+}
+::-webkit-scrollbar-thumb{
+  background: darkgray;
+  border-radius: 0.25rem;
+}
 #app {
-  height: 100vh;
+  height: 100%;
 }
 canvas {
   position: absolute;

@@ -10,6 +10,7 @@
     "@types/gsap": "^1.20.2",
     "@types/pixi.js": "^5.0.0",
     "@types/uikit": "^3.3.1",
+    "apexcharts": "^3.26.0",
     "gsap": "^3.6.0",
     "pixi.js": "^5.3.7",
     "uikit": "^3.6.15",

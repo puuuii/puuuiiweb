@@ -12,6 +12,8 @@ import ScrollTo from '../views/gsap/ScrollTo.vue'
 import Particle from '../views/gsap/Particle.vue'
 import Css from '../views/gsap/css.vue'
 import HighLow from '../views/wasm/HighLow.vue'
+import Profile from '../views/Profile.vue'
+import Skill from '../views/profile/Skill.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -70,6 +72,17 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'highlow',
         component: HighLow,
+      },
+    ]
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    children: [
+      {
+        path: 'skill',
+        component: Skill,
       },
     ]
   },
